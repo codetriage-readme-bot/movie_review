@@ -44,7 +44,6 @@ class MoviesController < ApplicationController
     else
       render "new"
     end
-
   end
 
  
@@ -52,25 +51,24 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie
     else
-      render 'edit'
+      render "edit"
     end
   end
 
   
   def destroy
-    if @movie.destroy
-      redirect_to root_path
-    end
+    @movie.destroy
+    redirect_to root_path
   end
 
   private
     
-    def set_movie
-      @movie = Movie.find(params[:id])
-    end
+  def set_movie
+    @movie = Movie.find(params[:id])
+  end
 
     
-    def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
-    end
+  def movie_params
+    params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
+  end
 end
