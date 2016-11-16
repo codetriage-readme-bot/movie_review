@@ -51,10 +51,10 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Edit', edit_movie_path(@movie), class: "btn btn-default" %> |
-<%= link_to 'Back', movies_path, class: "btn btn-default" %>
-
+<% if current_user && current_user.admin_id == true %>
+  <%= link_to 'Edit', edit_movie_path(@movie), class: "btn btn-default" %> |
+  <%= link_to 'Back', movies_path, class: "btn btn-default" %>
+<% end %>
 <script>
     $('.star-rating').raty({
       path: '/assets/',
