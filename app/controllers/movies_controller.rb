@@ -12,12 +12,12 @@ class MoviesController < ApplicationController
 
   
   def index
-    @movies = Movie.all
+    @movies = Movie.all.order('created_at DESC')
   end
 
   
   def show
-    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
+    @reviews = Review.where(movie_id: @movie.id).order('created_at DESC')
 
     if @reviews.blank?
       @avg_review = 0
