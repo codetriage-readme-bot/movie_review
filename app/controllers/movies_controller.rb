@@ -40,18 +40,18 @@ class MoviesController < ApplicationController
     @movie = current_user.movies.build(movie_params)
 
     if @movie.save
-      redirect_to movie_path(@movie.id)
+      redirect_to @movie
     else
-      render "new"
+      render 'new'
     end
   end
 
  
   def update
     if @movie.update(movie_params)
-      redirect_to movie_path(@movie.id)
+      redirect_to @movie
     else
-      render "edit"
+      render 'edit'
     end
   end
 
